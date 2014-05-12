@@ -137,7 +137,7 @@ class _ETA(object):
         sys.stderr.flush()
 
     def print_status(self, current=None, extra='', overwrite=True):
-        self.i += 1
+        self.i += self.step
         if self.modulo and self.i % self.modulo > 0:
             return
 
@@ -162,7 +162,7 @@ class _ETA(object):
             if self.fileobj:
                 current = self.fileobj.tell()
             else:
-                current = self.last_step + self.step
+                current = self.i
 
         self.last_step = current
 
